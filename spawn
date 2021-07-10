@@ -1,0 +1,3 @@
+command /spawn:
+  trigger:
+    console command "/tp %player% 0 50 0"
