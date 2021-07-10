@@ -1,0 +1,24 @@
+every tick:
+    loop all players:
+        if {%loop-player's world%.voidspawn.status} is true:
+            if loop-player's y-coordinate is less than 1:
+                teleport loop-player to {%loop-player's world%.voidspawn.point}
+
+command /vssk <text>:
+    trigger:
+        if arg-1 is "set":
+            set {%player's world%.voidspawn.status} to true
+            set {%player's world%.voidspawn.point} to location of player
+            send "&5VoidSpawn.sk の座標を設定しました。" to player
+            stop
+        if arg-1 is "remove":
+            delete {%player's world%.voidspawn.status}
+            delete {%player's world%.voidspawn.point}
+            send "&5あなたのいる世界のVoidSpawn.sk を初期設定にしました。" to player
+            stop
+        if arg-1 is "tp":
+            if {%player's world%.voidspawn.status} is true:
+                teleport player to {%player's world%.voidspawn.point} 
+                stop
+        else:
+            send "&cそのようなコマンドは存在しません。" to player
