@@ -1,3 +1,3 @@
 command /spawn:
   trigger:
-    console command "/tp %player% 0 50 0"
+    teleport the player to location at (0, 50, 0)
