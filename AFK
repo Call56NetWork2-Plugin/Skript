@@ -1,0 +1,17 @@
+command /afk <text>:
+    trigger:
+        if arg-1 is set:
+            if arg-1 is "on":
+                if {afk.%player%} is 0:
+                    set {afk.%player%} to 1
+                    broadcast "{@prefix} &6%player%&eは離席中です"
+                else:
+                    send "{@prefix} &cすでに離席しています"
+            else if arg-1 is "off":
+                if {afk.%player%} is 1:
+                    set {afk.%player%} to 0
+                    broadcast "{@prefix} &6%player%&eの離席が解除されました"
+                else:
+                    send "{@prefix} &c離席していません"
+        else:    
+            send "&c引数が無効です"
