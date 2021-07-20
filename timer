@@ -1,0 +1,26 @@
+command /timer <text> [<int>]:
+    trigger:
+        if arg-1 is "start":
+            if arg-2 is set:
+                set {timer.time} to arg-2
+                set {timer.status} to true 
+                stop
+            else:
+                set {timer.time} to 500
+                set {timer.status} to true 
+                stop
+        if arg-1 is "set":
+            if arg-2 is set:
+                set {timer.time} to arg-2
+                send "&5タイマーの時間を%arg-2%に変えました。" to player 
+                stop
+            else:
+                send "&c時間を指定してください。" to player
+                stop
+            stop 
+
+every seconds:
+    if {timer.status} is true:
+        loop all players:
+            set action bar of loop-player to "残り時間 : %{timer.time}% 秒"
+    remove 1 from {timer.time}
